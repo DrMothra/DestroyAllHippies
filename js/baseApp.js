@@ -84,6 +84,8 @@ BaseApp.prototype.keydown = function(event) {
             console.log('Cam =', this.camera.position);
             console.log('Look =', this.controls.getLookAt());
     }
+
+    this.keydown(event);
 };
 
 BaseApp.prototype.mouseClicked = function(event) {
@@ -152,7 +154,7 @@ BaseApp.prototype.createScene = function() {
 BaseApp.prototype.createCamera = function() {
 
     this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 5000 );
-    this.camera.position.set(0, 300, 500 );
+    this.camera.position.set(0, 0, 200 );
 
     console.log('dom =', this.renderer.domElement);
 };
