@@ -57,7 +57,15 @@ body {
         opacity: 0;
     }
 }
+@-webkit-keyframes titleShow {
+    0% {
+        top: 35%;
+    }
 
+    100% {
+        top: 35%;
+    }
+}
 .hide {
     display: none;
 }
@@ -71,48 +79,49 @@ body {
     font-size: 2em;
     padding: 1% 5%;
     color: white;
-    border: none;
     border-radius: 15px;
-
-    -webkit-animation-name: intro;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-duration: 10s;
 }
-
-.displayText2 {
-    opacity: 0;
+.titleText {
+    opacity: 1;
     position: fixed;
-    top: 35%;
+    top: -35%;
     left: 25%;
     width: 40%;
     font-family: bitstream, sans-serif;
     font-size: 2em;
     padding: 1% 5%;
     color: white;
-    border: none;
     border-radius: 15px;
-
+}
+.bordered {
+    border: 3px solid white;
+}
+.intro1 {
+    -webkit-animation-name: intro;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-duration: 10s;
+}
+.intro2 {
     -webkit-animation-name: intro;
     -webkit-animation-timing-function: linear;
     -webkit-animation-duration: 10s;
     -webkit-animation-delay: 10s;
 }
-
-.displayText3 {
-    opacity: 0;
-    position: fixed;
-    top: 35%;
-    left: 25%;
-    width: 40%;
-    font-family: bitstream, sans-serif;
-    font-size: 2em;
-    padding: 1% 5%;
-    color: white;
-    border: none;
-    border-radius: 15px;
-
+.intro3 {
     -webkit-animation-name: intro;
     -webkit-animation-timing-function: linear;
     -webkit-animation-duration: 10s;
     -webkit-animation-delay: 20s;
+}
+.intro4 {
+    -webkit-animation-name: intro;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-duration: 10s;
+    -webkit-animation-delay: 30s;
+}
+.titleAnim {
+    -webkit-animation-name: titleShow;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-duration: 10s;
+    -webkit-animation-delay: 30s;
 }
