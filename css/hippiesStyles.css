@@ -57,7 +57,16 @@ body {
         opacity: 0;
     }
 }
-@-webkit-keyframes titleShow {
+@-webkit-keyframes fadeInQuick {
+    0% {
+        opacity: 0;
+    }
+
+    2% {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes drop35 {
     0% {
         top: 35%;
     }
@@ -66,8 +75,20 @@ body {
         top: 35%;
     }
 }
+@-webkit-keyframes drop70 {
+    0% {
+        top: 70%;
+    }
+
+    100% {
+        top: 70%;
+    }
+}
 .hide {
     display: none;
+}
+.clear {
+    opacity: 0;
 }
 .displayText {
     opacity: 0;
@@ -96,32 +117,50 @@ body {
 .bordered {
     border: 3px solid white;
 }
-.intro1 {
+#hippiesIntro {
     -webkit-animation-name: intro;
     -webkit-animation-timing-function: linear;
     -webkit-animation-duration: 10s;
 }
-.intro2 {
+#mainText {
     -webkit-animation-name: intro;
     -webkit-animation-timing-function: linear;
     -webkit-animation-duration: 10s;
     -webkit-animation-delay: 10s;
 }
-.intro3 {
+#teaserText {
     -webkit-animation-name: intro;
     -webkit-animation-timing-function: linear;
     -webkit-animation-duration: 10s;
     -webkit-animation-delay: 20s;
 }
-.intro4 {
-    -webkit-animation-name: intro;
+#destroyText {
+    -webkit-animation-name: fadeInQuick;
     -webkit-animation-timing-function: linear;
-    -webkit-animation-duration: 10s;
+    -webkit-animation-duration: 300s;
     -webkit-animation-delay: 30s;
 }
-.titleAnim {
-    -webkit-animation-name: titleShow;
+#allText {
+    -webkit-animation-name: fadeInQuick;
     -webkit-animation-timing-function: linear;
-    -webkit-animation-duration: 10s;
+    -webkit-animation-duration: 300s;
+    -webkit-animation-delay: 35s;
+}
+#hippiesText {
+    -webkit-animation-name: fadeInQuick;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-duration: 300s;
+    -webkit-animation-delay: 40s;
+}
+#surround {
+    -webkit-animation-name: drop35;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-duration: 300s;
     -webkit-animation-delay: 30s;
+}
+#startText {
+    -webkit-animation-name: drop70;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-duration: 300s;
+    -webkit-animation-delay: 50s;
 }
