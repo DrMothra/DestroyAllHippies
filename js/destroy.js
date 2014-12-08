@@ -12,18 +12,30 @@ function Destroy() {
 Destroy.prototype = new BaseApp();
 
 Destroy.prototype.init = function(container) {
-    //Animation
-    this.animationTime = 0;
-    this.rotationInc = Math.PI/32;
-    this.totalRot = 0;
-    this.waveAmplitude = 1;
-    this.WaveDelay = this.rotationInc;
+    //Initialise base
     BaseApp.prototype.init.call(this, container);
+
+    //Init app
+    this.stateNames = ['Intro', 'Menu', 'Play'];
+    this.currentState = 0;
+    //Add states
+    this.stateSystem = new StateSystem();
+    var state = 0;
+    this.stateSystem.addState(new Intro(this.stateNames[state++]));
+    this.stateSystem.addState(new Menu(this.stateNames[state++]));
+    this.stateSystem.addState(new Play(this.stateNames[state++]));
+    this.stateSystem.changeState(this.stateNames[this.currentState]);
 };
 
 Destroy.prototype.update = function() {
-
     BaseApp.prototype.update.call(this);
+
+    //State updates
+    if (this.stateSystem.update(this.elapsedTime)) {
+        //Change state
+        console.log('State changed');
+        this.stateSystem.changeState(this.stateNames[++this.currentState]);
+    }
 };
 
 Destroy.prototype.createScene = function() {

@@ -84,6 +84,23 @@ body {
         top: 70%;
     }
 }
+@-webkit-keyframes flash {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
 .hide {
     display: none;
 }
@@ -167,10 +184,14 @@ body {
     -webkit-animation-delay: 30s;
 }
 #startText {
-    -webkit-animation-name: drop70;
+    -webkit-animation-name: drop70, flash;
     -webkit-animation-timing-function: linear;
-    -webkit-animation-duration: 300s;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-iteration-count: infinite;
     -webkit-animation-delay: 50s;
+}
+.flashing {
+
 }
 .separate {
     margin-bottom: 2%;
