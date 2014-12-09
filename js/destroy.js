@@ -16,15 +16,14 @@ Destroy.prototype.init = function(container) {
     BaseApp.prototype.init.call(this, container);
 
     //Init app
-    this.stateNames = ['Intro', 'Menu', 'Play'];
-    this.currentState = 0;
     //Add states
-    this.stateSystem = new StateSystem();
+    this.stateSystem = new StateSystem(this.scene);
     var state = 0;
-    this.stateSystem.addState(new Intro(this.stateNames[state++]));
-    this.stateSystem.addState(new Menu(this.stateNames[state++]));
-    this.stateSystem.addState(new Play(this.stateNames[state++]));
-    this.stateSystem.changeState(this.stateNames[this.currentState]);
+    this.stateSystem.addState(new Intro());
+    this.stateSystem.addState(new KeyPress());
+    this.stateSystem.addState(new Menu());
+    this.stateSystem.addState(new Start());
+    this.stateSystem.changeState();
 };
 
 Destroy.prototype.update = function() {
@@ -34,29 +33,13 @@ Destroy.prototype.update = function() {
     if (this.stateSystem.update(this.elapsedTime)) {
         //Change state
         console.log('State changed');
-        this.stateSystem.changeState(this.stateNames[++this.currentState]);
+        this.stateSystem.changeState();
     }
 };
 
 Destroy.prototype.createScene = function() {
     //Init base createsScene
     BaseApp.prototype.createScene.call(this);
-
-    //Create space ship
-    var shipImage = THREE.ImageUtils.loadTexture('images/spaceship.png');
-
-    var shipMat = new THREE.SpriteMaterial( {
-            transparent: true,
-            opacity: 0.9,
-            useScreenCoordinates: false,
-            map: shipImage }
-    );
-    this.ship = new THREE.Sprite(shipMat);
-    this.ship.scale.x = 10;
-    this.ship.scale.y = 10;
-    this.ship.position.x = -140;
-    this.scene.add(this.ship);
-    this.ship.visible = false;
 };
 
 Destroy.prototype.keydown = function(event) {

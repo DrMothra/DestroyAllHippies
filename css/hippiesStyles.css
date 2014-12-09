@@ -142,6 +142,10 @@ body {
 .bordered {
     border: 3px solid white;
 }
+.selected {
+    color: red;
+}
+
 #hippiesIntro {
     -webkit-animation-name: intro;
     -webkit-animation-timing-function: linear;
@@ -196,6 +200,6 @@ body {
 .separate {
     margin-bottom: 2%;
 }
-#start {
+#Start {
     margin-top: 7%;
 }

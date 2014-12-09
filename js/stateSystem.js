@@ -2,10 +2,12 @@
  * Created by DrTone on 07/12/2014.
  */
 //State system
-function StateSystem() {
+function StateSystem(scene) {
+    this.scene = scene;
     this.states = [];
     this.stateNames = [];
     this.currentState = null;
+    this.currentStateNumber = 0;
 }
 
 StateSystem.prototype.addState = function(state) {
@@ -20,22 +22,40 @@ StateSystem.prototype.update = function(elapsedTime) {
     return this.currentState.update(elapsedTime);
 };
 
-StateSystem.prototype.changeState = function(stateName) {
-    //See if state exists
-    var foundState = false;
-    for(var i=0; i<this.states.length; ++i) {
-        if(this.stateNames[i] == stateName) {
-            foundState = true;
-            break;
-        }
-    }
-    if(!foundState) {
-        console.log('State does not exist');
+StateSystem.prototype.changeState = function() {
+    //Clear down previous state
+    if(this.currentState) {
+        var nextStateName = this.currentState.end();
+    } else {
+        //If no state then go to first state
+        this.currentState = this.states[this.currentStateNumber];
+        this.currentState.init();
+        console.log('First state =', this.stateNames[this.currentStateNumber]);
         return;
     }
-    this.currentState = this.states[i];
-    this.currentState.init();
+
+    //Progress through states unless told otherwise
+    if(nextStateName != null) {
+        var foundState = false;
+        for(var i=0; i<this.states.length; ++i) {
+            if(this.stateNames[i] == nextStateName) {
+                foundState = true;
+                this.currentStateNumber = i;
+                break;
+            }
+        }
+        if(!foundState) {
+            console.log('State does not exist');
+            return;
+        }
+    } else {
+        //Progress to next state
+        ++this.currentStateNumber;
+    }
+
+    this.currentState = this.states[this.currentStateNumber];
+    this.currentState.init(this.scene);
 
     //DEBUG
-    console.log('Changed state to', stateName);
+    console.log('Changed state to', this.stateNames[this.currentStateNumber]);
 };

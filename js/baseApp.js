@@ -58,14 +58,17 @@ BaseApp.prototype.createRenderer = function() {
     this.container.addEventListener('mousemove', function(event) {
         _this.mouseMoved(event);
     }, false);
+    /*
     $(document).keydown(function(event) {
         _this.keydown(event);
     });
+    */
     window.addEventListener('resize', function(event) {
         _this.windowResize(event);
     }, false);
 };
 
+/*
 BaseApp.prototype.keydown = function(event) {
     //Key press functionality
     switch(event.keyCode) {
@@ -87,6 +90,7 @@ BaseApp.prototype.keydown = function(event) {
 
     this.keydown(event);
 };
+*/
 
 BaseApp.prototype.mouseClicked = function(event) {
     //Update mouse state
