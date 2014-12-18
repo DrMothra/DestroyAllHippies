@@ -16,8 +16,9 @@ Destroy.prototype.init = function(container) {
     BaseApp.prototype.init.call(this, container);
 
     //Init app
+
     //Add states
-    this.stateSystem = new StateSystem(this.scene);
+    this.stateSystem = new StateSystem();
     var state = 0;
     this.stateSystem.addState(new Intro());
     this.stateSystem.addState(new KeyPress());
@@ -40,20 +41,7 @@ Destroy.prototype.update = function() {
 Destroy.prototype.createScene = function() {
     //Init base createsScene
     BaseApp.prototype.createScene.call(this);
-};
-
-Destroy.prototype.keydown = function(event) {
-    //Control ship
-    switch(event.keyCode) {
-        case 81: //P
-            this.ship.position.y += 5;
-            break;
-        case 65: //A
-            this.ship.position.y -= 5;
-            break;
-        default:
-            break;
-    }
+    this.stateSystem.setScene(this.scene);
 };
 
 $(document).ready(function() {

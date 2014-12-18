@@ -16,7 +16,7 @@ State.prototype.getName = function() {
     return this.stateName;
 };
 
-State.prototype.update = function(elapsedTime, keyState) {
+State.prototype.update = function(elapsedTime) {
     return (this.stateTime > 0 && elapsedTime > this.stateTime);
 };
 

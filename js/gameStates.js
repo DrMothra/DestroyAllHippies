@@ -112,6 +112,14 @@ Start.prototype = new State('Start');
 
 Start.prototype.init = function(scene) {
     //Set up state
+    this.yInc = 1;
+
+    //Handle keypresses
+    var _this = this;
+    $(document).keydown(function(event) {
+        _this.keyDown(event);
+    });
+
     //Create space ship
     var shipImage = THREE.ImageUtils.loadTexture('images/spaceship.png');
 
@@ -121,9 +129,23 @@ Start.prototype.init = function(scene) {
             useScreenCoordinates: false,
             map: shipImage }
     );
-    var ship = new THREE.Sprite(shipMat);
-    ship.scale.x = 10;
-    ship.scale.y = 10;
-    ship.position.x = -140;
-    scene.add(ship);
+    this.ship = new THREE.Sprite(shipMat);
+    this.ship.scale.x = 10;
+    this.ship.scale.y = 10;
+    this.ship.position.x = -140;
+    scene.add(this.ship);
+};
+
+Start.prototype.keyDown = function(event) {
+    //Handle ship movement
+    switch(event.keyCode) {
+        case 87: //w
+            this.ship.position.y += this.yInc;
+            break;
+        case 83: //s
+            this.ship.position.y -= this.yInc;
+            break;
+        default:
+            break;
+    }
 };

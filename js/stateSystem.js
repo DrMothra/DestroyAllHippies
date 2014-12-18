@@ -2,13 +2,16 @@
  * Created by DrTone on 07/12/2014.
  */
 //State system
-function StateSystem(scene) {
-    this.scene = scene;
+function StateSystem() {
     this.states = [];
     this.stateNames = [];
     this.currentState = null;
     this.currentStateNumber = 0;
 }
+
+StateSystem.prototype.setScene = function(scene) {
+    this.scene = scene;
+};
 
 StateSystem.prototype.addState = function(state) {
     this.states.push(state);
